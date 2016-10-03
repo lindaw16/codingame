@@ -1,10 +1,11 @@
 #include <iostream>
 #include <limits>
+#include <algorithm>
 
 using namespace std;
 
 /**
- * @param merges the two subarrays of A from p-q and q+1 to r
+ * Merges the two subarrays of A from p-q and q+1 to r
  * A = [0, ..., p, ..., q, q+1, ..., r, ..., n]
  * A1 = [p, ..., q]
  * A2 = [q+1, ..., r]
@@ -66,18 +67,14 @@ int main()
         horses[i] = Pi;
     }
 
-    merge_sort(horses, 0, N-1);
+    //merge_sort(horses, 0, N-1);
+    sort(horses, horses+N);
 
-    int min_diff = numeric_limits<int>::max();
+    int min_diff = horses[1]-horses[0];
 
     for (int i = 1; i < N; i++) {
-        if (horses[i] - horses[i-1] < min_diff) {
-            min_diff = horses[i] - horses[i-1];
-        }
+        min_diff = min(min_diff, horses[i]-horses[i-1]);
     }
-
-    // Write an action using cout. DON'T FORGET THE "<< endl"
-    // To debug: cerr << "Debug messages..." << endl;
 
     cout << min_diff << endl;
 }
