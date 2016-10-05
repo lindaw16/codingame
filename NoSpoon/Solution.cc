@@ -7,13 +7,17 @@
 
 using namespace std;
 
-string findNextRight(vector<vector<int>> &grid, int height, int width, int h, int w) {
+vector<vector<bool>> grid;
+int height;
+int width;
+
+string findNextRight(int h, int w) {
     if (w >= width-1) {
         return "-1 -1";
     }
 
     for (int i = w+1; i < width; i++) {
-        if (grid[h][i] == 0) {
+        if (grid[h][i]) {
             return to_string(i) + " " + to_string(h);
         }
     }
@@ -21,13 +25,13 @@ string findNextRight(vector<vector<int>> &grid, int height, int width, int h, in
     return "-1 -1";
 }
 
-string findNextBottom(vector<vector<int>> &grid, int height, int width, int h, int w) {
+string findNextBottom(int h, int w) {
     if (h >= height-1) {
         return "-1 -1";
     }
 
     for (int i = h+1; i < height; i++) {
-        if (grid[i][w] == 0) {
+        if (grid[i][w]) {
             return to_string(w) + " " + to_string(i);
         }
     }
@@ -40,33 +44,28 @@ string findNextBottom(vector<vector<int>> &grid, int height, int width, int h, i
  **/
 int main()
 {
-    int width; // the number of cells on the X axis
     cin >> width; cin.ignore();
-    int height; // the number of cells on the Y axis
     cin >> height; cin.ignore();
 
-    vector<vector<int>> grid(height, vector<int>(width));
-
     for (int h = 0; h < height; h++) {
-
         string line; // width characters, each either 0 or .
         getline(cin, line);
 
+        vector<bool> row(width);
+
         for (int w = 0; w < width; w++) {
-            if (line[w] == '0') {
-                grid[h][w] = 0;
-            } else if (line[w] == '.') {
-                grid[h][w] = 1;
-            }
+            row[w] = line[w] == '0';
         }
+
+        grid.push_back(row);
     }
 
     for (int h = 0; h < height; h++) {
         for (int w = 0; w < width; w++) {
 
-            if (grid[h][w] == 0) {
-                string next_right = findNextRight(grid, height, width, h, w);
-                string next_bottom = findNextBottom(grid, height, width, h, w);
+            if (grid[h][w]) {
+                string next_right = findNextRight(h, w);
+                string next_bottom = findNextBottom(h, w);
 
                 cout << w << " " << h << " " << next_right << " " << next_bottom << endl;
             }
