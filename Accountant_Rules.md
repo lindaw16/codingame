@@ -14,29 +14,29 @@ The game is played in a zone **16000** units wide by **9000** units high.
 You control a man named Wolff. Wolff must defend a given number of data points from a given number of enemies that are placed across the game zone.
 
 Wolff works as follows:
-*Wolff can be told to move to any point within the game zone by outputting the MOVE command followed by coordinates X Y. The top‑left point is 0 0.
-*Each turn, Wolff will move exactly 1000 units towards the target coordinates, or onto the target coordinates if he is less than 1000 units away.
-*Output the SHOOT command followed by the id of an enemy and Wolff will shoot that enemy, *dealing him damage inversely proportional to the distance between them*. The exact value is available in the Expert rules section.
-*Attempting to shoot an enemy who is already dead or does not exist will cause a **game over**. You score zero points.
-*If Wolff comes **within 2000 units** of any enemy, he is killed by the enemy and you lose the game. You score zero points.
+ * Wolff can be told to move to any point within the game zone by outputting the MOVE command followed by coordinates X Y. The top‑left point is 0 0.
+ * Each turn, Wolff will move exactly 1000 units towards the target coordinates, or onto the target coordinates if he is less than 1000 units away.
+ * Output the SHOOT command followed by the id of an enemy and Wolff will shoot that enemy, *dealing him damage inversely proportional to the distance between them*. The exact value is available in the Expert rules section.
+ * Attempting to shoot an enemy who is already dead or does not exist will cause a **game over**. You score zero points.
+ * If Wolff comes **within 2000 units** of any enemy, he is killed by the enemy and you lose the game. You score zero points.
 
 Data points work as follows:
-*Data points are placed at the start and *cannot be moved*.
-*Data points are worth 100 points apiece as long as they stay in play. If an enemy arrives at a data point, the data is *lost immediately* as well as the associated points.
-*If all data points are collected by the enemies, the game ends.
+ * Data points are placed at the start and *cannot be moved*.
+ * Data points are worth 100 points apiece as long as they stay in play. If an enemy arrives at a data point, the data is *lost immediately* as well as the associated points.
+ * If all data points are collected by the enemies, the game ends.
 
 Enemies work as follows:
-*Each turn, every enemy will target the closest data point and step *500 units* towards it. If the enemy is less than 500 units away, the data point is lost and the enemy moves onto its coordinates.
-*Two enemies may occupy the same coordinates.
-*Each enemy starts with a given number of life points. Dealing enough damage to the lower the enemy's life points to zero kills the enemy and *you score 10 points*.
+ * Each turn, every enemy will target the closest data point and step *500 units* towards it. If the enemy is less than 500 units away, the data point is lost and the enemy moves onto its coordinates.
+ * Two enemies may occupy the same coordinates.
+ * Each enemy starts with a given number of life points. Dealing enough damage to the lower the enemy's life points to zero kills the enemy and *you score 10 points*.
 
 The order in which actions happens in between two rounds is:
-1. Enemies move towards their targets.
-2. If a MOVE command was given, Wolff moves towards his target.
-3. Game over if an enemy is close enough to Wolff.
-4. If a SHOOT command was given, Wolff shoots an enemy.
-5. Enemies with zero life points are removed from play.
-6. Enemies collect data points they share coordinates with.
+ 1. Enemies move towards their targets.
+ 2. If a MOVE command was given, Wolff moves towards his target.
+ 3. Game over if an enemy is close enough to Wolff.
+ 4. If a SHOOT command was given, Wolff shoots an enemy.
+ 5. Enemies with zero life points are removed from play.
+ 6. Enemies collect data points they share coordinates with.
 
 When there are no more enemies or data points left, the game ends and you will score extra points according to the number of shots fired (in addition to the 100 points per data point and 10 points per kill).
 This bonus is calculated with the following formula:
@@ -44,9 +44,9 @@ This bonus is calculated with the following formula:
 **DP** \* max(0, (**L** - 3\* **S**)) \* 3
 
 Where:
-* **DP** is the number of data points left.
-* **L** is the total amount of life points enemies have among themselves at the start of the game.
-* **S** is the total number of shots fired during play.
+ * **DP** is the number of data points left.
+ * **L** is the total amount of life points enemies have among themselves at the start of the game.
+ * **S** is the total number of shots fired during play.
 
 #Victory Conditions
 You score at least 1 point.
@@ -84,21 +84,21 @@ The program must, within an infinite loop, read the contextual data from the sta
 
 
 #Input for one game turn
-*Line 1: two space-separated integers **x** and **y**, the coordinates of your character.
-*Line 2: one integer **dataCount**, the initial amount of data points.
-*Next dataCount lines : three space-separated integers **dataId**, **dataX** & **dataY**, the unique id and coordinates of a data point.
-*Next line: one integer **enemyCount**, the amount of enemies left to take out.
-*Next enemyCount lines: 4 space-separated integers **enemyId**, **enemyX**, **enemyY** & **enemyLife**, the unique id, current coordinates and life points of an enemy.
+ * Line 1: two space-separated integers **x** and **y**, the coordinates of your character.
+ * Line 2: one integer **dataCount**, the initial amount of data points.
+ * Next dataCount lines : three space-separated integers **dataId**, **dataX** & **dataY**, the unique id and coordinates of a data point.
+ * Next line: one integer **enemyCount**, the amount of enemies left to take out.
+ * Next enemyCount lines: 4 space-separated integers **enemyId**, **enemyX**, **enemyY** & **enemyLife**, the unique id, current coordinates and life points of an enemy.
 
 
 #Output for one game turn
 A single line:
-* **MOVE** followed by two integers **targetX** and **targetY**, the coordinates you want your character to move towards.
-* Or **SHOOT** followed by an *enemyId* to shoot that enemy. You may also append some text which will be displayed on screen e.g. MOVE 0 0 hello world.
+ * **MOVE** followed by two integers **targetX** and **targetY**, the coordinates you want your character to move towards.
+ * Or **SHOOT** followed by an *enemyId* to shoot that enemy. You may also append some text which will be displayed on screen e.g. MOVE 0 0 hello world.
 
 #Constraints
-*0 ≤ x < 16000
-*0 ≤ y < 9000
-*1 ≤ dataCount < 100
-*1 ≤ enemyCount < 100
-*Response time per game turn ≤ 100ms
+ * 0 ≤ x < 16000
+ * 0 ≤ y < 9000
+ * 1 ≤ dataCount < 100
+ * 1 ≤ enemyCount < 100
+ * Response time per game turn ≤ 100ms
