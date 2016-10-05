@@ -6,7 +6,7 @@ The players with the most points across all validation test cases at the end of 
 
 
 
-The Goal
+#The Goal
 
 
 Take out the armed forces in search of incriminating data. The more data gets saved, the higher you score. Other aspects of your performance will also affect your score.
@@ -49,14 +49,14 @@ Where:
 DP is the number of data points left.
 L is the total amount of life points enemies have among themselves at the start of the game.
 S is the total number of shots fired during play.
- 
+
 
 
 
 
 Victory Conditions
 You score at least 1 point.
- 
+
 
 
 
