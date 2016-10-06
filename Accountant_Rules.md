@@ -14,11 +14,11 @@ The game is played in a zone **16000** units wide by **9000** units high.
 You control a man named Wolff. Wolff must defend a given number of data points from a given number of enemies that are placed across the game zone.
 
 Wolff works as follows:
- * Wolff can be told to move to any point within the game zone by outputting the MOVE command followed by coordinates X Y. The top‑left point is 0 0.
- * Each turn, Wolff will move exactly 1000 units towards the target coordinates, or onto the target coordinates if he is less than 1000 units away.
- * Output the SHOOT command followed by the id of an enemy and Wolff will shoot that enemy, *dealing him damage inversely proportional to the distance between them*. The exact value is available in the Expert rules section.
- * Attempting to shoot an enemy who is already dead or does not exist will cause a **game over**. You score zero points.
- * If Wolff comes **within 2000 units** of any enemy, he is killed by the enemy and you lose the game. You score zero points.
+* Wolff can be told to move to any point within the game zone by outputting the MOVE command followed by coordinates X Y. The top‑left point is 0 0.
+* Each turn, Wolff will move exactly 1000 units towards the target coordinates, or onto the target coordinates if he is less than 1000 units away.
+* Output the SHOOT command followed by the id of an enemy and Wolff will shoot that enemy, *dealing him damage inversely proportional to the distance between them*. The exact value is available in the Expert rules section.
+* Attempting to shoot an enemy who is already dead or does not exist will cause a **game over**. You score zero points.
+* If Wolff comes **within 2000 units** of any enemy, he is killed by the enemy and you lose the game. You score zero points.
 
 Data points work as follows:
  * Data points are placed at the start and *cannot be moved*.
